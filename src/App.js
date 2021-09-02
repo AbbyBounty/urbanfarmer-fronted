@@ -15,7 +15,6 @@ function App() {
             <Route path="/signup" component={SignupScreen} />
             <Route path="/home" component={HomeScreen} />
             <Route path="/" component={SigninScreen} />
-
           </Switch>
         </div>
       </Router>
