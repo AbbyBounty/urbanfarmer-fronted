@@ -8,6 +8,12 @@ import {
   USER_SIGNUP_SUCCESS,
 } from '../constants/userConstants'
 import axios from 'axios'
+require('dotenv').config()
+
+const host=process.env.REACT_APP_API_URL;
+console.log("🚀 ~ file: userActions.js ~ line 14 ~ host", host)
+
+const port=process.env.REACT_APP_API_PORT
 
 export const logout = () => {
   return (dispatch) => {
@@ -36,7 +42,7 @@ export const signup = (firstName, lastName, email, mobileNo, password) => {
       mobileNo,
       password,
     }
-    const url = 'http://localhost:4000/users/signup'
+    const url = `${host}:${port}/users/signup`
     axios
       .post(url, body, header)
       .then((response) => {
@@ -70,7 +76,8 @@ export const signin = (email, password) => {
       email,
       password,
     }
-    const url = 'http://localhost:4000/users/signin'
+    const url = `${host}:${port}/users/signin`
+
     axios
       .post(url, body, header)
       .then((response) => {

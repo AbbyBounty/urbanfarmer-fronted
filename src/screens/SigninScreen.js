@@ -9,7 +9,6 @@ const SigninScreen = (props) => {
   const [password, setPassword] = useState('')
 
   const userSignin = useSelector((store) => store.userSignin)
-  console.log("🚀 ~ file: signinScreen.js ~ line 12 ~ SigninScreen ~ userSignin", userSignin)
   const { loading, error, response } = userSignin
 
   const dispatch = useDispatch()
