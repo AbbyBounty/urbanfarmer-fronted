@@ -41,8 +41,7 @@ const SignupScreen = (props) => {
   }
 
   return (
-    <div>
-      <Header title="Signup" />
+    <div className="container px-5 py-10 mx-auto">
       <div className="form">
         <div className="mb-3">
           <label className="form-label">First Name</label>
