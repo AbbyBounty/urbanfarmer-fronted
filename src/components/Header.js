@@ -2,8 +2,10 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../actions/userActions'
 const navigation = [
   { name: 'Home', to: 'home', current: true },
   { name: 'Products', to: 'products', current: false },
@@ -15,7 +17,19 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+const Header = (props) => {
+
+  const dispatch = useDispatch()
+  const userSignin = useSelector((store) => store.userSignin)
+  let history = useHistory();
+  const onLogout = () => {
+    dispatch(logout())
+  }
+
+  const onLogin = () => {
+    history.push('/signin')
+  }
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -64,7 +78,10 @@ export default function Example() {
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+
+              {userSignin.response ? <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+
+
                 <button
                   type="button"
                   className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
@@ -128,7 +145,10 @@ export default function Example() {
                     </Menu.Items>
                   </Transition>
                 </Menu>
-              </div>
+              </div> : <button onClick={onLogin} className="text-white bg-indigo-600 hover:bg-indigo-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Login
+              </button>}
+
             </div>
           </div>
 
@@ -157,6 +177,7 @@ export default function Example() {
 
 
 
+export default Header
 
 
 

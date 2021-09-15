@@ -15,6 +15,7 @@ function Routes() {
                 <div className="container">
                     <Switch>
                         <Route path="/signup" component={SignupScreen} />
+                        <Route path="/signin" component={SigninScreen} />
                         <Route path="/home" component={HomeScreen} />
                         <Route path="/products" component={ProductScreen} />
                         <Route path="/home" component={Home} />
