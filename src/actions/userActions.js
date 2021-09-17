@@ -10,10 +10,10 @@ import {
 import axios from 'axios'
 require('dotenv').config()
 
-const host=process.env.REACT_APP_API_URL;
+const host = process.env.REACT_APP_API_URL+":4000";
 console.log("🚀 ~ file: userActions.js ~ line 14 ~ host", host)
 
-const port=process.env.REACT_APP_API_PORT
+
 
 export const logout = () => {
   return (dispatch) => {
@@ -42,7 +42,7 @@ export const signup = (firstName, lastName, email, mobileNo, password) => {
       mobileNo,
       password,
     }
-    const url = `${host}:${port}/users/signup`
+    const url = `${host}/users/signup`
     axios
       .post(url, body, header)
       .then((response) => {
@@ -69,6 +69,8 @@ export const signin = (email, password) => {
     const header = {
       headers: {
         'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
       },
     }
 
@@ -76,7 +78,7 @@ export const signin = (email, password) => {
       email,
       password,
     }
-    const url = `${host}:${port}/users/signin`
+    const url = `${host}/users/signin`
 
     axios
       .post(url, body, header)

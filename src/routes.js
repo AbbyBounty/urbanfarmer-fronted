@@ -19,6 +19,7 @@ function Routes() {
                         <Route path="/home" component={HomeScreen} />
                         <Route path="/products" component={ProductScreen} />
                         <Route path="/home" component={Home} />
+                        <Route path="/" component={Home} />
                     </Switch>
                 </div>
             </Router>
