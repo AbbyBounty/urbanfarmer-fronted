@@ -145,6 +145,10 @@ const Header = (props) => {
                     </Menu.Items>
                   </Transition>
                 </Menu>
+
+                <button onClick={onLogout} className="text-white bg-indigo-600 hover:bg-indigo-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  Logout
+                </button>
               </div> : <button onClick={onLogin} className="text-white bg-indigo-600 hover:bg-indigo-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 Login
               </button>}
